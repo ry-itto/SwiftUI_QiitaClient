@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "QiitaAPIKit",
+        "repositoryURL": "https://github.com/ry-itto/QiitaAPIKit",
+        "state": {
+          "branch": null,
+          "revision": "09b884560612923033e854ced4738d3e5b04a9e7",
+          "version": "0.0.9"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
