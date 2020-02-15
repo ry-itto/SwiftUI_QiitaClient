@@ -27,7 +27,7 @@ final class ContentViewModel: ObservableObject {
 
     init() {
         querySubject
-            .flatMap { ArticleRequest(accessToken: "e8cbfa00ae25ddc88fd2ef2befd2ec00780c4197", requestQueryItem: .init(query: $0)).publisher }
+            .flatMap { ArticleRequest(requestQueryItem: .init(query: $0)).publisher }
             .share()
             .subscribe(articleSubject)
             .store(in: &cancellables)
