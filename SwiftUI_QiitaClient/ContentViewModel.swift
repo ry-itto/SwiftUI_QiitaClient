@@ -23,15 +23,18 @@ final class ContentViewModel: ObservableObject {
 
     // Output
     @Published private(set) var articles: ArticleRequest.Response = []
-    private let articleSubject = PassthroughSubject<ArticleRequest.Response, Error>()
+    private let articlesSubject =
+        PassthroughSubject<ArticleRequest.Response, Error>()
 
     init() {
         querySubject
-            .flatMap { ArticleRequest(requestQueryItem: .init(query: $0)).publisher }
-            .subscribe(articleSubject)
+            .flatMap {
+                ArticleRequest(requestQueryItem: .init(query: $0)).publisher
+            }
+            .subscribe(articlesSubject)
             .store(in: &cancellables)
 
-        articleSubject
+        articlesSubject
             .replaceError(with: [])
             .receive(on: DispatchQueue.main)
             .assign(to: \.articles, on: self)
